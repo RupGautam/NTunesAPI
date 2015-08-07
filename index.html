@@ -1,0 +1,1000 @@
+<!doctype html>
+<!--[if IE 6 ]><html lang="en-us" class="ie6"> <![endif]-->
+<!--[if IE 7 ]><html lang="en-us" class="ie7"> <![endif]-->
+<!--[if IE 8 ]><html lang="en-us" class="ie8"> <![endif]-->
+<!--[if (gt IE 7)|!(IE)]><!-->
+<html lang="en-us">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <title>NTunes API V1.0</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="NTunes">
+    <meta name="copyright" content="NTunes">
+    <meta name="date" content="July 2015">
+
+    <link rel="stylesheet" href="style.css" media="all">
+    <link rel="stylesheet" href="prettify.css" media="screen">
+    <script src="prettify.js"></script>
+
+
+
+    <script src="jquery.js"></script>
+
+    <script src="jquery.scrollTo.js"></script>
+    <script src="jquery.easing.js"></script>
+
+    <script>
+    document.createElement('section');
+    var duration = '500',
+        easing = 'swing';
+    </script>
+    <script src="script.js"></script>
+
+    <style>
+    html {
+        background-color: #FFFFFF;
+        color: #383838;
+    }
+    
+    ::-moz-selection {
+        background: #444444;
+        color: #DDDDDD;
+    }
+    
+    ::selection {
+        background: #444444;
+        color: #DDDDDD;
+    }
+    
+    #documenter_sidebar #documenter_logo {
+        background-image: url(/img/logo_bw_ntunes.png);
+    }
+    
+    a {
+        color: #0000FF;
+    }
+    
+    .btn {
+        border-radius: 3px;
+    }
+    
+    .btn-primary {
+        background-image: -moz-linear-gradient(top, #0088CC, #0044CC);
+        background-image: -ms-linear-gradient(top, #0088CC, #0044CC);
+        background-image: -webkit-gradient(linear, 0 0, 0 0088CC%, from(#DDDDDD), to(#0044CC));
+        background-image: -webkit-linear-gradient(top, #0088CC, #0044CC);
+        background-image: -o-linear-gradient(top, #0088CC, #0044CC);
+        background-image: linear-gradient(top, #0088CC, #0044CC);
+        filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#0088CC', endColorstr='#0044CC', GradientType=0);
+        border-color: #0044CC #0044CC #bfbfbf;
+        color: #FFFFFF;
+    }
+    
+    .btn-primary:hover,
+    .btn-primary:active,
+    .btn-primary.active,
+    .btn-primary.disabled,
+    .btn-primary[disabled] {
+        border-color: #0088CC #0088CC #bfbfbf;
+        background-color: #0044CC;
+    }
+    
+    hr {
+        border-top: 1px solid #EBEBEB;
+        border-bottom: 1px solid #FFFFFF;
+    }
+    
+    #documenter_sidebar,
+    #documenter_sidebar ul a {
+        background-color: #DDDDDD;
+        color: #222222;
+    }
+    
+    #documenter_sidebar ul a {
+        -webkit-text-shadow: 1px 1px 0px #EEEEEE;
+        -moz-text-shadow: 1px 1px 0px #EEEEEE;
+        text-shadow: 1px 1px 0px #EEEEEE;
+    }
+    
+    #documenter_sidebar ul {
+        border-top: 1px solid #AAAAAA;
+    }
+    
+    #documenter_sidebar ul a {
+        border-top: 1px solid #EEEEEE;
+        border-bottom: 1px solid #AAAAAA;
+        color: #444444;
+    }
+    
+    #documenter_sidebar ul a:hover {
+        background: #4f155f;
+        color: #DDDDDD;
+        border-top: 1px solid #444444;
+    }
+    
+    #documenter_sidebar ul a.current {
+        background: #4f155f;
+        color: #DDDDDD;
+        border-top: 1px solid #444444;
+    }
+    
+    #documenter_copyright {
+        display: block !important;
+        visibility: visible !important;
+    }
+    </style>
+
+</head>
+
+<body>
+    <div id="documenter_sidebar">
+        <a href="#documenter_cover" id="documenter_logo"></a>
+        <ul id="documenter_nav">
+            <li><a class="current" href="#documenter_cover">Start</a></li>
+
+            <li><a href="#introduction" title="Introduction">Introduction</a></li>
+            <li><a href="#Authentication" title="Authentication">Authentication</a></li>
+            <li><a href="#relations" title="Relations">Relations</a></li>
+            <li><a href="#pagination" title="Pagination">Pagination</a></li>
+            <li><a href="#api_endpoints" title="API Endpoints">API Endpoints</a></li>
+            <li><a href="#albums" title="Albums">Albums</a></li>
+            <li><a href="#categories" title="Categories (genres)">Categories (genres)</a></li>
+            <li><a href="#playlists" title="Playlists">Playlists</a></li>
+            <li><a href="#play" title="Play">Play</a></li>
+            <li><a href="#Top" title="Top">Top</a></li>
+            <li><a href="#Users" title="Users">Users</a></li>
+        </ul>
+        <div id="documenter_copyright">Copyright 2015 NTunes Inc.
+        </div>
+    </div>
+    <div id="documenter_content">
+        <section id="documenter_cover">
+            <h1>Nepal Tunes "NTunes" API System V1.0</h1>
+            <hr>
+            <ul>
+                <li>Created: 06/26/2015</li>
+                <li>Latest update: 07/25/2015</li>
+                <li>By: Rup Gautam</li>
+                <li>
+                    <a href=""></a>
+                </li>
+                <li>Email:<a>support@ntunes.net</a></li>
+            </ul>
+            <p>Thank you for purchasing SmartAdmin Responsive WebApp. If you have any questions that are beyond the scope of this help file, please feel free to email us via the email address above.</p>
+            <img height="auto;" src="img/ntunes.png" style="border: 0px solid transparent;" width="720">
+        </section>
+
+        <section id="introduction">
+            <div class="page-header">
+                <h3>Introduction</h3>
+                <hr class="notop">
+            </div>
+            <p>
+                <span id="docs-internal-guid-5edc7fad-dbc5-6bfe-137b-c8ba186cff74"><strong>SmartAdmin WebApp</strong> goes beyond the ordinary admin template. Its unique flat design and responsive layout is crafted one of a kind. SmartAdmin comes with 40+ customized jquery plugins including 5 unique plugins (exclusively catered for SmartAdmin). SmartAdmin Relations lets you customize your project for almost any device - be it Mobile, Web or WebApp - SmartAdmin has you covered!</span></p>
+            <p>
+                <section id="Authentication">
+                    <div class="page-header">
+                        <h3>Authentication</h3>
+                        <hr class="notop">
+                    </div>
+                    <strong>
+  For authentication you first need to fetch a token using your username and password:</strong>
+
+                    <pre class="prettyprint lang-css linenums">POST /1.0/tokens</pre>
+
+                    <strong>Post your username and password as JSON in the body of your post:</strong>
+
+                    <pre class="prettyprint lang-css linenums">
+{
+    "username": "myUsername",
+    "password": "myPassword"
+}
+</pre>
+            
+<p> Response: </p>
+
+
+                    <pre class="prettyprint lang-css linenums">
+                    {
+    "id": 23,
+    "first_name": "Bob",
+    "last_name": "Mann",
+    "username": "myUsername",
+    "email_id": "test@example.com",
+    "tokens": [
+        {
+            "id": 17,
+            "user_id": 23,
+            "token": "qnL0j5hcqg2blxjgSQ0vuSsvZSdieQ3EBUkdP0caHLhxd8gvv1MY3bod9Hce",
+            "expires": "2015-08-10 17:36:48",
+            "updated_at": "2015-05-12 17:36:48",
+            "created_at": "2015-05-12 17:36:48"
+        }
+    ]
+}</pre>
+
+                    <p>This token can be used for all other API requests. All requests use Basic Authentication. You should include the Authorization header along with your credentials:</p>
+
+                    <pre class="prettyprint lang-css linenums"> Authorization: username:token </pre>
+                    <pre class="prettyprint lang-css linenums"> Please remember to base64 encode you username:token</pre>
+                </section>
+                <section id="relations">
+                    <div class="page-header">
+                        <h3>Relations</h3>
+                        <hr class="notop">
+                    </div>
+                    <div>
+                        <p>Most calls support nested relations. They can be fetched by adding the with parameter to the url. The relation uses dot notation for nested relations. So for example to retrieve all songs, along with their album objects they are related to you'd do this:</p>
+                    </div>
+                    <div>
+                        <div class="alert alert-danger">
+
+                            <em><strong>NOTE: Fetch nested relations by adding the <code>with:</code></strong></em></div>
+                        <pre class="prettyprint lang-css linenums"> GET /1.0/songs?with=albums </pre>
+                        <p>A nested relation would look like this:</p>
+                        <pre class="prettyprint lang-css linenums"> GET /1.0/top?with=song.album </pre>
+                        <p> Some resources already have nesting built in by default for convenience.</p>
+                    </div>
+
+                    <div>
+                        &nbsp;</div>
+
+                </section>
+                <section id="pagination">
+                    <div class="page-header">
+                        <h3>Pagination</h3>
+                        <hr class="notop">
+                    </div>
+                    <div>
+                        <p>Almost all calls support pagination. You'll know if a call supports it because you'll receive an object back with paging data (i.e. last_page, total etc). </p>
+                    </div>
+                    <div class="alert alert-info">
+                        <b>To visit the next page simple provide the page parameter in your call:</b></div>
+                    <pre class="prettyprint lang-css linenums"> GET /1.0/songs?page=2 </pre>
+                    <div class="alert alert-info">
+                        <b>You can optionally add a per_page attribute as well (which defaults to 15 when not specified):</b></div>
+                    <pre class="prettyprint lang-html linenums"> GET /1.0/songs?page=2&per_page=20 </pre>
+                </section>
+                <section id="api_endpoints">
+                    <div class="page-header">
+                        <h3>API Endpoints</h3>
+                        <hr class="notop">
+                    </div>
+                    <div class="page-header">
+                        <h3>Songs</h3>
+                        <hr class="notop">
+                    </div>
+                    <div>
+                        <p>Result:</p>
+                    </div>
+                    <pre class="prettyprint lang-css linenums"> GET /1.0/songs/{song_id} </pre>
+                    <div>
+                        <pre class="prettyprint lang-json linenums">
+    {
+    "id": 1,
+    "name": "Bhaigo Aba",
+    "slug": "10-Bhaigo-Aba.html",
+    "singer": {
+        "id": 1,
+        "name": "Karma",
+        "slug": "Karma.html",
+        "upimage": "http://nepaltunes.com/upload/thumbs/default.png"
+    },
+    "category": {
+        "id": 12,
+        "name": "Dohori",
+        "slug": "Dohori.html"
+    },
+    "sub": null,
+    "album": {
+        "id": 1,
+        "name": "Sahar Timro",
+        "slug": "Sahar-Timro.html",
+        "upimage": "http://nepaltunes.com/upload/thumbs/Sahar-Timro.jpg"
+    }
+}  
+    </pre>
+                        <section id="albums">
+                            <div class="page-header">
+                                <h3>Albums</h3>
+                                <hr class="notop">
+                            </div>
+                            <pre class="prettyprint lang-css linenums"> GET /1.0/albums/{album_id}</pre>
+                            <p>Result:</p>
+
+                            <div>
+                                <pre class="prettyprint lang-css linums"> 
+    {
+    "id": 1,
+    "name": "Sahar Timro",
+    "slug": "Sahar-Timro.html",
+    "upimage": "http://nepaltunes.com/upload/thumbs/Sahar-Timro.jpg",
+    "sub": null,
+    "category": {
+        "id": 21,
+        "name": "Rock",
+        "slug": "Rock.html"
+    },
+    "songs": [
+        {
+            "id": 1,
+            "name": "Bhaigo Aba",
+            "slug": "10-Bhaigo-Aba.html"
+        },
+        {
+            "id": 2,
+            "name": "Bhana Saathi Ho",
+            "slug": "11-Bhana-Saathi-Ho.html"
+        },
+        {
+            "id": 3,
+            "name": "Nilo Aakash Ma",
+            "slug": "13-Nilo-Aakash-Ma.html"
+        },
+        {
+            "id": 4,
+            "name": "Sahar Timro",
+            "slug": "14-Sahar-Timro.html"
+        },
+        {
+            "id": 5,
+            "name": "Ghar Aagan",
+            "slug": "12-Ghar-Aagan.html"
+        }
+    ],
+    "singer": {
+        "id": 1,
+        "name": "Karma",
+        "slug": "Karma.html",
+        "upimage": "http://nepaltunes.com/upload/thumbs/default.png"
+    }
+}  
+    </pre>
+                            </div>
+                        </section>
+
+                        <section id="categories">
+                            <div class="page-header">
+                                <h3>Categories (genres)</h3>
+                                <hr class="notop">
+                            </div>
+                            <div>
+                                <p>Result:</p>
+                            </div>
+                            <pre class="prettyprint lang-css linenums"> GET /1.0/categories/{category_id} </pre>
+                            <div>
+                                <pre class="prettyprint lang-json linenums">
+    {
+    "id": 14,
+    "name": "Classical",
+    "slug": "Classical.html",
+    "albums": [
+        {
+            "id": 6,
+            "name": "VIBES",
+            "slug": "VIBES.html",
+            "upimage": "http://nepaltunes.com/upload/thumbs/VIBES.png"
+        }
+    ]
+}
+    </pre>
+                                <section id="playlists">
+                                    <div class="page-header">
+                                        <h3>Playlists</h3>
+                                        <hr class="notop">
+                                    </div>
+                                    <div>
+                                        <p>Result:</p>
+                                    </div>
+                                    <pre class="prettyprint lang-css linenums"> GET /1.0/playlists/{playlist_id} </pre>
+                                    <div>
+                                        <pre class="prettyprint lang-json linenums">
+ {
+    "id": 2,
+    "playlist_name": "Best Of Choying",
+    "upimage": "http://nepaltunes.com/upload/thumbs/default-app.png",
+    "songs": [
+        {
+            "id": 28,
+            "name": "Yeutai Hami - Best-Of-Choying",
+            "slug": "Yeutai Hami- Best-Of-Choying",
+            "album": {
+                "id": 6,
+                "name": "Yeutai Hami",
+                "slug": "Yeutai Hami - Best-Of-Choying.html",
+                "upimage": "http://nepaltunes.com/upload/thumbs/default-app.png"
+            }
+        }
+    ]
+}                
+    
+    </pre>
+                                        <section id="play">
+                                            <div class="page-header">
+                                                <h3>Play</h3>
+                                                <hr class="notop">
+                                            </div>
+                                            <div>
+                                                <p>Result:</p>
+                                            </div>
+                                            <pre class="prettyprint lang-css linenums"> GET /1.0/songs/{song_id} </pre>
+                                            <div>
+                                                <div class="alert alert-info"> <b> NOTE: This endpoint sends back an s3 link that expires in 5 seconds
+        </b></div>
+                                                <pre class="prettyprint lang-json linenums">
+{
+    "src": "https://s3.amazonaws.com/media.ntunes.net/027225085681caae87c69597ffbc456f.mp3?AWSAccessKeyId=AKIAIUS3B2CRRWX5YSFA&Expires=1433346731&Signature=c6htLQh01HQcWEag9V7Lkv5FTbs%3D"
+}   
+    </pre>
+                                                <section id="Top">
+                                                    <div class="page-header">
+                                                        <h3>Top</h3>
+                                                        <hr class="notop">
+                                                    </div>
+                                                    <p>This fetches the top songs by play count for the current day.</p>
+                                                    <div>
+                                                        <p>Result:</p>
+                                                    </div>
+                                                    <pre class="prettyprint lang-css linenums"> GET /1.0/top </pre>
+                                                    <div>
+
+                                                        <pre class="prettyprint lang-json linenums">
+{
+    "total": 26,
+    "per_page": 25,
+    "current_page": 1,
+    "last_page": 2,
+    "next_page_url": "https://api.nepaltunes.com/1.0/top/?page=2",
+    "prev_page_url": null,
+    "from": 1,
+    "to": 25,
+    "data": [
+        {
+            "id": 123,
+            "top_id": 69,
+            "count": "1",
+            "date": "2015-06-03 01:06:59",
+            "song": {
+                "id": 69,
+                "name": "Feb 1(+3)",
+                "slug": "Feb-1(+3).html",
+                "album": {
+                    "id": 12,
+                    "name": "Naulo Bihani",
+                    "slug": "Naulo-Bihani.html",
+                    "upimage": "http://nepaltunes.com/upload/thumbs/Naulo-Bihani.jpg"
+                }
+            }
+        },
+        {
+            "id": 122,
+            "top_id": 68,
+            "count": "1",
+            "date": "2015-06-03 01:06:57",
+            "song": {
+                "id": 68,
+                "name": "Folk Men",
+                "slug": "Folk-Men.html",
+                "album": {
+                    "id": 12,
+                    "name": "Naulo Bihani",
+                    "slug": "Naulo-Bihani.html",
+                    "upimage": "http://nepaltunes.com/upload/thumbs/Naulo-Bihani.jpg"
+                }
+            }
+        },
+        {
+            "id": 121,
+            "top_id": 67,
+            "count": "1",
+            "date": "2015-06-03 01:06:54",
+            "song": {
+                "id": 67,
+                "name": "Jalna",
+                "slug": "Jalna.html",
+                "album": {
+                    "id": 12,
+                    "name": "Naulo Bihani",
+                    "slug": "Naulo-Bihani.html",
+                    "upimage": "http://nepaltunes.com/upload/thumbs/Naulo-Bihani.jpg"
+                }
+            }
+        },
+        {
+            "id": 120,
+            "top_id": 66,
+            "count": "1",
+            "date": "2015-06-03 01:06:48",
+            "song": {
+                "id": 66,
+                "name": "Kanchi",
+                "slug": "Kanchi.html",
+                "album": {
+                    "id": 12,
+                    "name": "Naulo Bihani",
+                    "slug": "Naulo-Bihani.html",
+                    "upimage": "http://nepaltunes.com/upload/thumbs/Naulo-Bihani.jpg"
+                }
+            }
+        },
+        {
+            "id": 119,
+            "top_id": 65,
+            "count": "1",
+            "date": "2015-06-03 01:06:45",
+            "song": {
+                "id": 65,
+                "name": "Manchare",
+                "slug": "Manchare.html",
+                "album": {
+                    "id": 12,
+                    "name": "Naulo Bihani",
+                    "slug": "Naulo-Bihani.html",
+                    "upimage": "http://nepaltunes.com/upload/thumbs/Naulo-Bihani.jpg"
+                }
+            }
+        },
+        {
+            "id": 118,
+            "top_id": 64,
+            "count": "1",
+            "date": "2015-06-03 01:06:36",
+            "song": {
+                "id": 64,
+                "name": "Farewell",
+                "slug": "Farewell.html",
+                "album": {
+                    "id": 12,
+                    "name": "Naulo Bihani",
+                    "slug": "Naulo-Bihani.html",
+                    "upimage": "http://nepaltunes.com/upload/thumbs/Naulo-Bihani.jpg"
+                }
+            }
+        },
+        {
+            "id": 113,
+            "top_id": 53,
+            "count": "1",
+            "date": "2015-06-03 00:41:19",
+            "song": {
+                "id": 53,
+                "name": "Chhath",
+                "slug": "Chhath.html",
+                "album": {
+                    "id": 10,
+                    "name": "Mithila",
+                    "slug": "Mithila.html",
+                    "upimage": "http://nepaltunes.com/upload/thumbs/Mithila.jpg"
+                }
+            }
+        },
+        {
+            "id": 112,
+            "top_id": 54,
+            "count": "1",
+            "date": "2015-06-03 00:41:15",
+            "song": {
+                "id": 54,
+                "name": "Shiva Matha Kara",
+                "slug": "Shiva-Matha-Kara.html",
+                "album": {
+                    "id": 10,
+                    "name": "Mithila",
+                    "slug": "Mithila.html",
+                    "upimage": "http://nepaltunes.com/upload/thumbs/Mithila.jpg"
+                }
+            }
+        },
+        {
+            "id": 111,
+            "top_id": 55,
+            "count": "1",
+            "date": "2015-06-03 00:41:11",
+            "song": {
+                "id": 55,
+                "name": "Tikuli",
+                "slug": "Tikuli.html",
+                "album": {
+                    "id": 10,
+                    "name": "Mithila",
+                    "slug": "Mithila.html",
+                    "upimage": "http://nepaltunes.com/upload/thumbs/Mithila.jpg"
+                }
+            }
+        },
+        {
+            "id": 110,
+            "top_id": 56,
+            "count": "1",
+            "date": "2015-06-03 00:41:05",
+            "song": {
+                "id": 56,
+                "name": "Jai Jai Bhairabi",
+                "slug": "Jai-Jai-Bhairabi.html",
+                "album": {
+                    "id": 10,
+                    "name": "Mithila",
+                    "slug": "Mithila.html",
+                    "upimage": "http://nepaltunes.com/upload/thumbs/Mithila.jpg"
+                }
+            }
+        },
+        {
+            "id": 109,
+            "top_id": 57,
+            "count": "1",
+            "date": "2015-06-03 00:41:01",
+            "song": {
+                "id": 57,
+                "name": "Chaitawar",
+                "slug": "Chaitawar.html",
+                "album": {
+                    "id": 10,
+                    "name": "Mithila",
+                    "slug": "Mithila.html",
+                    "upimage": "http://nepaltunes.com/upload/thumbs/Mithila.jpg"
+                }
+            }
+        },
+        {
+            "id": 108,
+            "top_id": 58,
+            "count": "1",
+            "date": "2015-06-03 00:40:56",
+            "song": {
+                "id": 58,
+                "name": "Sama",
+                "slug": "Sama.html",
+                "album": {
+                    "id": 10,
+                    "name": "Mithila",
+                    "slug": "Mithila.html",
+                    "upimage": "http://nepaltunes.com/upload/thumbs/Mithila.jpg"
+                }
+            }
+        },
+        {
+            "id": 107,
+            "top_id": 52,
+            "count": "1",
+            "date": "2015-06-03 00:40:09",
+            "song": {
+                "id": 52,
+                "name": "Jhijhiya",
+                "slug": "Jhijhiya.html",
+                "album": {
+                    "id": 10,
+                    "name": "Mithila",
+                    "slug": "Mithila.html",
+                    "upimage": "http://nepaltunes.com/upload/thumbs/Mithila.jpg"
+                }
+            }
+        },
+        {
+            "id": 105,
+            "top_id": 32,
+            "count": "1",
+            "date": "2015-06-02 16:06:45",
+            "song": {
+                "id": 32,
+                "name": "Nachaheko - The Edge Band",
+                "slug": "Nachaheko---The-Edge-Band.html",
+                "album": {
+                    "id": 6,
+                    "name": "VIBES",
+                    "slug": "VIBES.html",
+                    "upimage": "http://nepaltunes.com/upload/thumbs/VIBES.png"
+                }
+            }
+        },
+        {
+            "id": 104,
+            "top_id": 30,
+            "count": "1",
+            "date": "2015-06-02 12:49:59",
+            "song": {
+                "id": 30,
+                "name": "Jiuna Lai Gharo Bho - The Edge Band",
+                "slug": "Jiuna-Lai-Gharo-Bho---The-Edge-Band.html",
+                "album": {
+                    "id": 6,
+                    "name": "VIBES",
+                    "slug": "VIBES.html",
+                    "upimage": "http://nepaltunes.com/upload/thumbs/VIBES.png"
+                }
+            }
+        },
+        {
+            "id": 103,
+            "top_id": 40,
+            "count": "1",
+            "date": "2015-06-01 19:37:48",
+            "song": {
+                "id": 40,
+                "name": "Hune Lai Ta Bhagya Pani",
+                "slug": "Hune-Lai-Ta-Bhagya-Pani.html",
+                "album": {
+                    "id": 7,
+                    "name": "Mokshya",
+                    "slug": "Mokshya.html",
+                    "upimage": "http://nepaltunes.com/upload/thumbs/Mokshya---Shiva-Pariyar.png"
+                }
+            }
+        },
+        {
+            "id": 102,
+            "top_id": 43,
+            "count": "1",
+            "date": "2015-06-01 19:36:15",
+            "song": {
+                "id": 43,
+                "name": "Phewatalma Saili",
+                "slug": "Phewatalma-Saili.html",
+                "album": {
+                    "id": 7,
+                    "name": "Mokshya",
+                    "slug": "Mokshya.html",
+                    "upimage": "http://nepaltunes.com/upload/thumbs/Mokshya---Shiva-Pariyar.png"
+                }
+            }
+        },
+        {
+            "id": 101,
+            "top_id": 42,
+            "count": "1",
+            "date": "2015-06-01 19:36:09",
+            "song": {
+                "id": 42,
+                "name": "Pahile Hamro Jhyal Batai",
+                "slug": "Pahile-Hamro-Jhyal-Batai.html",
+                "album": {
+                    "id": 7,
+                    "name": "Mokshya",
+                    "slug": "Mokshya.html",
+                    "upimage": "http://nepaltunes.com/upload/thumbs/Mokshya---Shiva-Pariyar.png"
+                }
+            }
+        },
+        {
+            "id": 100,
+            "top_id": 41,
+            "count": "1",
+            "date": "2015-06-01 19:36:06",
+            "song": {
+                "id": 41,
+                "name": "Bato Hidne Batuwa Lai",
+                "slug": "Bato-Hidne-Batuwa-Lai.html",
+                "album": {
+                    "id": 7,
+                    "name": "Mokshya",
+                    "slug": "Mokshya.html",
+                    "upimage": "http://nepaltunes.com/upload/thumbs/Mokshya---Shiva-Pariyar.png"
+                }
+            }
+        },
+        {
+            "id": 99,
+            "top_id": 39,
+            "count": "1",
+            "date": "2015-06-01 19:35:58",
+            "song": {
+                "id": 39,
+                "name": "Kaska Lagi",
+                "slug": "Kaska-Lagi.html",
+                "album": {
+                    "id": 7,
+                    "name": "Mokshya",
+                    "slug": "Mokshya.html",
+                    "upimage": "http://nepaltunes.com/upload/thumbs/Mokshya---Shiva-Pariyar.png"
+                }
+            }
+        },
+        {
+            "id": 98,
+            "top_id": 38,
+            "count": "1",
+            "date": "2015-06-01 19:35:45",
+            "song": {
+                "id": 38,
+                "name": "Jati Birsyo Timro Yaad",
+                "slug": "Jati-Birsyo-Timro-Yaad.html",
+                "album": {
+                    "id": 7,
+                    "name": "Mokshya",
+                    "slug": "Mokshya.html",
+                    "upimage": "http://nepaltunes.com/upload/thumbs/Mokshya---Shiva-Pariyar.png"
+                }
+            }
+        },
+        {
+            "id": 97,
+            "top_id": 2,
+            "count": "1",
+            "date": "2015-06-01 19:35:24",
+            "song": {
+                "id": 2,
+                "name": "Bhana Saathi Ho",
+                "slug": "11-Bhana-Saathi-Ho.html",
+                "album": {
+                    "id": 1,
+                    "name": "Sahar Timro",
+                    "slug": "Sahar-Timro.html",
+                    "upimage": "http://nepaltunes.com/upload/thumbs/Sahar-Timro.jpg"
+                }
+            }
+        },
+        {
+            "id": 94,
+            "top_id": 1,
+            "count": "1",
+            "date": "2015-05-31 22:24:40",
+            "song": {
+                "id": 1,
+                "name": "Bhaigo Aba",
+                "slug": "10-Bhaigo-Aba.html",
+                "album": {
+                    "id": 1,
+                    "name": "Sahar Timro",
+                    "slug": "Sahar-Timro.html",
+                    "upimage": "http://nepaltunes.com/upload/thumbs/Sahar-Timro.jpg"
+                }
+            }
+        },
+        {
+            "id": 93,
+            "top_id": 36,
+            "count": "1",
+            "date": "2015-05-31 22:21:23",
+            "song": {
+                "id": 36,
+                "name": "Kohile Chadi Ramro",
+                "slug": "Kohile-Chadi-Ramro.html",
+                "album": {
+                    "id": 7,
+                    "name": "Mokshya",
+                    "slug": "Mokshya.html",
+                    "upimage": "http://nepaltunes.com/upload/thumbs/Mokshya---Shiva-Pariyar.png"
+                }
+            }
+        },
+        {
+            "id": 88,
+            "top_id": 37,
+            "count": "1",
+            "date": "2015-05-29 22:46:10",
+            "song": {
+                "id": 37,
+                "name": "Hyrdayama Taschhu Bhaneko",
+                "slug": "Hyrdayama-Taschhu-Bhaneko.html",
+                "album": {
+                    "id": 7,
+                    "name": "Mokshya",
+                    "slug": "Mokshya.html",
+                    "upimage": "http://nepaltunes.com/upload/thumbs/Mokshya---Shiva-Pariyar.png"
+                }
+            }
+        }
+    ]
+}                           
+    </pre>
+                                                        <section id="Users">
+                                                            <div class="page-header">
+                                                                <h3>Users</h3>
+                                                                <hr class="notop">
+                                                            </div>
+                                                            <div>
+                                                                <p> Creates a new user. Make sure the body has the following in JSON encoded format and you've set your Content-Type to application/json:</p>
+                                                                <p> Post Result:</p>
+                                                            </div>
+                                                            <pre class="prettyprint lang-css linenums"> POST /1.0/users </pre>
+                                                            <div>
+                                                                <pre class="prettyprint lang-json linenums">
+{
+  "username": "newuser",
+  "password": "mypassword",
+  "first_name": "John",
+  "last_name": "Doe",
+  "email_id": "john@example.com"
+}   </pre>
+                                                                <p> Response</p>
+                                                                <pre class="prettyprint lang-json linenums">
+{
+    "username": "newuser",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email_id": "john@example.com",
+    "id": 45,
+    "tokens": [
+        {
+            "id": 68,
+            "user_id": 45,
+            "token": "jr4om1eRESGpDIN1sYMMgkTvoH4dRpmFT0j3rTxGUV3IELtjkjArzdvpvFdK",
+            "expires": "2015-09-01 16:04:54",
+            "updated_at": "2015-06-03 16:04:54",
+            "created_at": "2015-06-03 16:04:54"
+        }
+    ]
+}    </pre>
+
+
+                                                                <p> Post Result:</p>
+                                                            </div>
+                                                            <pre class="prettyprint lang-css linenums"> GET /1.0/users/{user_id} </pre>
+                                                            <div>
+                                                                <p> Fetches a user. Note that if you're not an admin, then you only have access to your own user information. </p>
+                                                                <p> Response:</p>
+                                                                <pre class="prettyprint lang-json linenums">
+{
+    "id": 23,
+    "first_name": "Bob",
+    "last_name": "Mann",
+    "username": "testguy2",
+    "email_id": "test@guy.com"
+}    </pre>
+                                                                <p> Response</p>
+                                                                <pre class="prettyprint lang-json linenums">
+{
+    "username": "newuser",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email_id": "john@example.com",
+    "id": 45,
+    "tokens": [
+        {
+            "id": 68,
+            "user_id": 45,
+            "token": "jr4om1eRESGpDIN1sYMMgkTvoH4dRpmFT0j3rTxGUV3IELtjkjArzdvpvFdK",
+            "expires": "2015-09-01 16:04:54",
+            "updated_at": "2015-06-03 16:04:54",
+            "created_at": "2015-06-03 16:04:54"
+        }
+    ]
+}    </pre>
+
+                                                                <p> Post Result:</p>
+                                                            </div>
+                                                            <pre class="prettyprint lang-css linenums"> GET /1.0/users/{user_id} </pre>
+                                                            <div>
+                                                                <p> Update your user information. </p>
+                                                                <p> Response:</p>
+                                                                <div class="alert alert-info">
+                                                                    <b> NOTE: You MUST send first_name, last_name, password, and email_id with the correct values regardless if you're updating them or not.</b></div>
+                                                                <pre class="prettyprint lang-json linenums">
+{
+    "first_name": "NewName",
+    "last_name": "Doe",
+    "password": "newPassword",
+    "email_id": "test@example.com"
+} 
+         </pre>
+                                                                <p> Response</p>
+                                                                <pre class="prettyprint lang-json linenums">
+{
+    "username": "newuser",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email_id": "john@example.com",
+    "id": 45,
+    "tokens": [
+        {
+            "id": 68,
+            "user_id": 45,
+            "token": "jr4om1eRESGpDIN1sYMMgkTvoH4dRpmFT0j3rTxGUV3IELtjkjArzdvpvFdK",
+            "expires": "2015-09-01 16:04:54",
+            "updated_at": "2015-06-03 16:04:54",
+            "created_at": "2015-06-03 16:04:54"
+        }
+    ]
+}    </pre>
+
+                                                            </div>
+                                                        </section>
+
+                                                    </div>
+</body>
+
+</html>
